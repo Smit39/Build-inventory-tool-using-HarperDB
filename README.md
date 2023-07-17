@@ -305,74 +305,78 @@ Here, we have made the operation type as an `update` query with **schema and tab
 
 Then the SQL query is provided inside `records`. The value of all the attributes is written as variables. This will help us to send the updated data dynamically from our app.
 
-app information about product 
+![app information about product](https://cdn1.dronahq.com/wp-content/uploads/2023/05/image16-1-768x963.png)
 
 In the above image, we are updating records of cilantro using the variables.
 
-Click on Test API & Save.
+Click on **Test API & Save**.
 
-test of production 
+![test of production](https://cdn1.dronahq.com/wp-content/uploads/2023/05/HarperDB-52-1-1.png)
  
-
 Your sub-API to update data will be added.
 
-add different API 
-Edit data using table grid property
+![add different API](https://cdn1.dronahq.com/wp-content/uploads/2023/05/HarperDB-53-1.png)
+
+## Edit data using table grid property
 To update the data, we will use the edit columns property of table grid control. Simply go to your table grid control and in the property section, select the columns you want to make editable.
 
-SUB API 
+![SUB API](https://cdn1.dronahq.com/wp-content/uploads/2023/05/image19-1024x328-1-1024x335.png)
 You will notice the edit sign on the top of each selected column. Select every column except the ID.
 
-Next, go to the table grid > events > save changes. This will open an action builder, through which we will trigger an event on Save Changes to execute an action of API call to update the database.
+Next, go to the _table grid > events > save changes_. This will open an action builder, through which we will trigger an event on Save Changes to execute an action of API call to update the database.
 
-INVENTORY TOOL 
+![INVENTORY TOOL](https://cdn1.dronahq.com/wp-content/uploads/2023/05/image1-768x271-1-768x277.png)
+
 Since there can be multiple rows with updated changes, we will use a client-side action of the iterate task to loop through each change.
 
-ENTER COUNT 
+![ENTER COUNT](https://cdn1.dronahq.com/wp-content/uploads/2023/05/image2-10-768x339.png)
+
 We will iterate with the help of `tablegrid.PROPERTIES.EDITEDROWS` property.
 
-JS CODE 
+![JS CODE](https://cdn1.dronahq.com/wp-content/uploads/2023/05/image3-10.png) 
  
-
 Next, we have to save each of the properties in different output variables so that we can use it later to bind as keywords in our update query request of the connector.
 
-CONFIGURE YOUR ACTION 
+![CONFIGURE YOUR ACTION](https://cdn1.dronahq.com/wp-content/uploads/2023/05/image4-10.png) 
  
-
- Under the JS Code editor add the client-side action of the configured connector, selecting the update query.
+Under the JS Code editor add the client-side action of the configured connector, selecting the update query.
 Now, bind the query variables with their appropriate keywords saved in variables from the previous JS Code editor.
 
-ENDPOINT 
- 
+![ENDPOINT](https://cdn1.dronahq.com/wp-content/uploads/2023/05/image12-1-1.png) 
 
-Click Continue then Finish.
+Click **Continue** then **Finish**.
 
-NOTE: Make sure to add a refresh control action from the On-Screen Actions to view the updated data after saving the changes in the table grid.
+**NOTE**: Make sure to add a refresh control action from the On-Screen Actions to view the updated data after saving the changes in the table grid.
 
-Preview of add 
+![Preview of add](https://cdn1.dronahq.com/wp-content/uploads/2023/05/HarperDB-57-1.png)
+
 Preview the App.
 
 Table Grid before update-
 
-table grid update should save changes 
+![table grid update should save changes](https://cdn1.dronahq.com/wp-content/uploads/2023/05/image7-1024x362-1-1024x368.png)
+
 Table Grid after update-
 
-updated table grid 
-> You can view the logs of API calls from our Logs feature. In the above image, we can see that the API call of `updateData` was successful.
+![updated table grid](https://cdn1.dronahq.com/wp-content/uploads/2023/05/image8-1024x245-1-1024x253.png)
 
-Deleting products from inventory tool
+> You can view the logs of API calls from our **Logs** feature. In the above image, we can see that the API call of `updateData` was successful.
+
+## Deleting products from inventory tool
 Finally, our last task for the inventory tool would be Deleting the data. To delete the data, we need to add another sub-API.
 
-Find your connector from the connect list and click on +ADD API.
+Find your connector from the connect list and click on **+ADD API**.
 
-select test API +ADD API 
+![select test API +ADD API](https://cdn1.dronahq.com/wp-content/uploads/2023/05/image9-1024x174-2-4-1024x182.png)
+
 Enter the API name. Select the method as `POST`. 
 
-Here we have provided the sub-API name as `deleteData`.Click on Advance, and select content type as `RAW`.
+Here we have provided the sub-API name as `deleteData`.Click on **Advance**, and select content type as `RAW`.
 
-DELETED DATA 
-Query:
+![DELETED DATA](https://cdn1.dronahq.com/wp-content/uploads/2023/05/HarperDB-50-1.png) 
 
+**Query**:
+''' sql
 {
 
     “operation”: “sql”,
@@ -380,7 +384,7 @@ Query:
     “sql”:”delete FROM inventory.product WHERE product_id = \”{{id}}\””
 
 }
-
+```
 Here, we have made the operation type as a `delete` query with schema and table details.
 
 The operation type  “SQL” query and have written the SQL to query to delete the data in the “product” table located under our earlier created “inventory” schema with respect to the provided `product_id`.
