@@ -145,37 +145,39 @@ Your sub-API to fetch data will be added.
 ## Displaying Data
 Now, let’s go to our studio builder view and drop a table grid control, to view our products. Go to the data bind section of the table grid control and select the _connector_.
 
-expected format 
+![expected format](https://cdn1.dronahq.com/wp-content/uploads/2023/05/image20-768x340-1-768x346.png)
+
 Simply select your HarperDb connector with the `getData` sub-API. 
 
-Make sure that the keys of columns are selected to bind to the control. Do a Test & Finish.
+Make sure that the keys of columns are selected to bind to the control. Do a **Test & Finish**.
 
-add HarperDB connector name 
-You can view the data from the database being populated in the table grid control. You can provide data formatting to the table grid columns. For instance, we can set the data type to the `number` of `Price`, `Quantity`, and `BackorderLimit` columns with the help of Format Data. 
+![add HarperDB connector name](https://cdn1.dronahq.com/wp-content/uploads/2023/05/image21-1.png) 
 
-data will appear 
-Add the column name and data type respectively to it. Click Finish.
+You can view the data from the database being populated in the table grid control. You can provide data formatting to the table grid columns. For instance, we can set the data type to the `number` of `Price`, `Quantity`, and `BackorderLimit` columns with the help of **Format Data**.
 
-customise data format 
+![data will appear](https://cdn1.dronahq.com/wp-content/uploads/2023/05/image22-1024x525-1-1024x530.png) 
+
+Add the column name and data type respectively to it. Click **Finish**.
+
+![customise data format](https://cdn1.dronahq.com/wp-content/uploads/2023/05/image23-1.png) 
  
-
-Submitting Inventory Details via Form
+## Submitting Inventory Details via Form
 Next, the task for this inventory tool is to save new entries in our HarperDB. To send the data, we need to add another sub-API.
 
-Find your connector from the connecter list and click on +ADD API.
+Find your connector from the connecter list and click on **+ADD API**.
 
-add API 
+![add API](https://cdn1.dronahq.com/wp-content/uploads/2023/05/image9-1024x174-2-1-1024x182.png)
+
 Enter the API name. Select the method as `POST`. 
 
-Here we have provided the sub-API name as `sendData`.Click on Advance, and select content type as `RAW`.
+Here we have provided the sub-API name as `sendData`.Click on **Advance**, and select content type as `RAW`.
 
-configure API for connector 
- 
+![configure API for connector](https://cdn1.dronahq.com/wp-content/uploads/2023/05/image24-1-768x965.png)
 
-Under the Body/Form parameter section, we will write a query as part of the request body to send data of a product to the Product table in our database using SQL query. 
+Under the **Body/Form parameter** section, we will write a query as part of the request body to send data of a product to the Product table in our database using SQL query. 
 
-Query:
-
+**Query**:
+``` sql
 {
 
     “operation”: “insert”,
@@ -205,66 +207,67 @@ Query:
     ]
 
 }
+```
 
-Here, we have made the operation type as an `insert` query with schema and table details.
+Here, we have made the operation type as an `insert` query with **8schema and table** details.
 
 Then the SQL query is provided inside `records`. The value of all the attributes is written as variables. This will help us to send data dynamically from our app.
 
-body format 
+![body format](https://cdn1.dronahq.com/wp-content/uploads/2023/05/image25-1-768x915.png) 
  
-
 In the above image, we are providing records of the product table using the variables.
 
-Click on Test API & Save.
+Click on **Test API & Save**.
 
-response of output 
- 
+![response of output](https://cdn1.dronahq.com/wp-content/uploads/2023/05/image26-1-768x715.png) 
 
 Your sub-API to update data will be added.
 
-send data 
-Submitting Data via Form
+![send data](https://cdn1.dronahq.com/wp-content/uploads/2023/05/image27-1024x171-1-1-1024x179.png)
+
+## Submitting Data via Form
 
 To take input details from the user in our microapp, we will create a form template. This form will take input regarding product details from the user and on-click of submit button, the data will be inserted in the `product` table of HarperDB instance using the `sendData` sub-API from the action builder.
 
 In the below image, we have created a form template. We can see that for the `back ordered` column, we are using the `toggle` control values are Boolean, and that corresponds to the toggle control, which can represent both states as true or false.
 
-insert new product 
- 
+![insert new product](https://cdn1.dronahq.com/wp-content/uploads/2023/05/image28-1.png) 
 
 Now let’s bind actions to the `submit` button.
 
-add button click 
- 
+![add button click](https://cdn1.dronahq.com/wp-content/uploads/2023/05/image11-1.png)
 
-Select the HarperDB connector from the Server-Side action list and select the `sendData` query.Bind the controls by using their keywords in the variable sections.add raw response 
- 
+Select the **HarperDB** connector from the Server-Side action list and select the `sendData` query.Bind the controls by using their keywords in the variable sections.add raw response 
+  
+![HPinv](https://cdn1.dronahq.com/wp-content/uploads/2023/05/image12-1.png)
 
- 
+Click **Continue > Finish**. I am also adding an action of `reset control data` to reset the table grid control on the success of the action with the `sendData` API call to get the refreshed response of the products.
 
-Click Continue > Finish. I am also adding an action of `reset control data` to reset the table grid control on the success of the action with the `sendData` API call to get the refreshed response of the products.
+![Action flow](https://cdn1.dronahq.com/wp-content/uploads/2023/05/image13-768x359.png)
 
-Action flow
 Preview the app and insert details of a new product and hit `Submit`.
 
-insert new product and raw response 
-> You can view the logs of API calls from our Logs feature. In the above image, we can see that the API call of `sendData` was successful.
+![insert new product and raw response](https://cdn1.dronahq.com/wp-content/uploads/2023/05/image14-1024x474-1-1024x479.png) 
 
-Edit inventory details via table grid
+> You can view the logs of API calls from our **Logs** feature. In the above image, we can see that the API call of `sendData` was successful.
+
+## Edit inventory details via table grid
 Next, the task for this inventory tool is to update entries in our HarperDB. To update the data, we need to add another sub-API.
 
-Find your connector from the connecter list and click on +ADD API.
+Find your connector from the connecter list and click on **+ADD API**.
 
-test API 
+![test API](https://cdn1.dronahq.com/wp-content/uploads/2023/05/image9-1024x174-2-3-1024x182.png)
+
 Enter the API name. Select the method as `POST`. 
 
-Here we have provided the sub-API name as `updateData`.Click on Advance, and select content type as `RAW`.
+Here we have provided the sub-API name as `updateData`.Click on **Advance**, and select content type as `RAW`.
 
-configure AP for your connector 
-Under the Body/Form parameter section, we will write a query as part of the request body to send updated data of a product to the Product table in our database using SQL query. 
+![configure AP for your connector](https://cdn1.dronahq.com/wp-content/uploads/2023/05/image15-1-2-768x833.png)
 
-Query:
+Under the **Body/Form parameter** section, we will write a query as part of the request body to send updated data of a product to the Product table in our database using SQL query. 
 
+**Query**:
+``` sql
 {
 
     “operation”: “update”,
@@ -296,13 +299,13 @@ Query:
     ]
 
 }
+```
 
-Here, we have made the operation type as an `update` query with schema and table details.
+Here, we have made the operation type as an `update` query with **schema and table** details.
 
 Then the SQL query is provided inside `records`. The value of all the attributes is written as variables. This will help us to send the updated data dynamically from our app.
 
 app information about product 
- 
 
 In the above image, we are updating records of cilantro using the variables.
 
