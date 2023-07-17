@@ -7,7 +7,7 @@ The inventory tool application will possess operational functionalities for effe
 HarperDB is a NoSQL database with SQL semantics. With flexible user-defined APIs, simple HTTP/s interface, and a high-performance single-model data store that accommodates both NoSQL and SQL workloads, HarperDB scales with your application from proof of concept to production. Install and manage on your hardware, or have them host it with HarperDB Cloud.
 
 ## Prerequisite
-1. You should have an account on [DronaHQ](https://www.dronahq.com/signup/?utm_source=github&utm_medium=cubejs&utm_campaign=smit) with [Studio Login](https://studio.dronahq.com/login).
+1. You should have an account on [DronaHQ](https://www.dronahq.com/signup/?utm_source=github&utm_medium=harperdb&utm_campaign=smit) with [Studio Login](https://studio.dronahq.com/login).
 
 2. You should know how to configure the REST API connector. You can learn more about configuring REST API with various authentication methods from [here](https://community.dronahq.com/search?q=rest%20api).
 
@@ -376,7 +376,7 @@ Here we have provided the sub-API name as `deleteData`.Click on **Advance**, and
 ![DELETED DATA](https://cdn1.dronahq.com/wp-content/uploads/2023/05/HarperDB-50-1.png) 
 
 **Query**:
-''' sql
+``` sql
 {
 
     “operation”: “sql”,
@@ -385,40 +385,49 @@ Here we have provided the sub-API name as `deleteData`.Click on **Advance**, and
 
 }
 ```
-Here, we have made the operation type as a `delete` query with schema and table details.
+
+Here, we have made the operation type as a `delete` query with **schema and table** details.
 
 The operation type  “SQL” query and have written the SQL to query to delete the data in the “product” table located under our earlier created “inventory” schema with respect to the provided `product_id`.
 
-PRODUCT ID USING VARIABLE 
+![PRODUCT ID USING VARIABLE]https://cdn1.dronahq.com/wp-content/uploads/2023/05/HarperDB-51-1-1.png)
+
 In the above image, we are providing product id using the variables.
 
-Click on Test API & Save.
+Click on **Test API & Save**.
 
-TEST OF PRODUCTION 
+![TEST OF PRODUCTION](https://cdn1.dronahq.com/wp-content/uploads/2023/05/image26-1-1-768x715.png)
+
 Your sub-API to delete data will be added.
 
-SUB API 
-Delete data using the table grid property
+![SUB API](https://cdn1.dronahq.com/wp-content/uploads/2023/05/HarperDB-53-1-1.png)
+
+## Delete data using the table grid property
 To delete records using Table Grid control, toggle the `Delete` to ON from the properties. This will give us a nice and clean button of delete(TrashCan) with which we will bind the action to delete.
 
-TABLE GRID CONTROL 
+![TABLE GRID CONTROL](https://cdn1.dronahq.com/wp-content/uploads/2023/05/image40-1.png)
+
 Go to the Events of the Table Grid control then select `delete_click`, an action builder will open.
 
-select delete click 
+![select delete click](https://cdn1.dronahq.com/wp-content/uploads/2023/05/image43-1-768x397.png)
+
 Select the HarperDB Configured connector with `deleteData` sub-API from the server-side action list.
 
-Bind the keyword of product ID to send it via API call.
+Bind the keyword of _product ID_ to send it via API call.
 
-product id 
-Click Continue then Finish.
+![product id](https://cdn1.dronahq.com/wp-content/uploads/2023/05/HarperDB-56-1.png)
 
-NOTE: Make sure to add a refresh control action from the On-Screen Actions to view the updated data after saving the changes in the table grid.
+Click **Continue** then **Finish**.
 
-preview the app and check out delete function 
+**NOTE**: Make sure to add a refresh control action from the On-Screen Actions to view the updated data after saving the changes in the table grid.
+
+![preview the app and check out delete function](https://cdn1.dronahq.com/wp-content/uploads/2023/05/image48-1.png) 
+
 Preview your app and try out the delete functionality. 
 
-delete function 
-Building better inventory tools: Unleashing the potential of DronaHQ and HarperDB
+![delete function](https://cdn1.dronahq.com/wp-content/uploads/2023/05/image50-1024x252-1-1024x259.png) 
+
+## Building better inventory tools: Unleashing the potential of DronaHQ and HarperDB
 Use HarperDB as the database backend to store and manage inventory data. Create tables to store information about products, stock levels, orders, transactions, and any other relevant data fields. HarperDB’s flexibility and real-time capabilities will enable efficient data storage and retrieval.
 
 Utilize DronaHQ’s low code development platform to build the user interface and application logic for your inventory management tool. With DronaHQ’s visual development environment, you can create custom forms, tables, and workflows tailored to your specific inventory management requirements.
@@ -429,4 +438,4 @@ Leverage the features of both platforms to enhance your inventory management too
 
 By combining the strengths of HarperDB and DronaHQ, you can develop a robust and efficient inventory management tool that meets your specific requirements, providing real-time data management, streamlined workflows, and an intuitive user interface.
 
-Build your own internal tools. Get started here!
+Build your own internal tools. Get started [here](https://www.dronahq.com/signup/?utm_source=github&utm_medium=harperdb&utm_campaign=smit)!
